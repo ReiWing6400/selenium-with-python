@@ -18,6 +18,15 @@ class LoginPageLocators(object):
 
 
 class ProductPageLocators(object):
-    ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, "#add_to_basket_form")
+    # HEADER_BASKET_TOTAL_PRICE =
+
     ITEM_NAME = (By.CSS_SELECTOR, "div[class$='product_main'] > h1")
-    ADDED_ITEM_NAME = (By.XPATH, "//*[text()[contains(.,'added')]]/strong")
+    ITEM_PRICE = (By.CSS_SELECTOR, "div[class$='product_main'] > .price_color")
+    ITEM_OK_ICON = (By.CSS_SELECTOR, "div[class$='product_main'] i[class='icon-ok']")
+    ITEM_AVAILABILITY = (By.CSS_SELECTOR, "div[class$='product_main'] p.instock.availability")
+    ITEM_SEND_FEEDBACK_BUTTON = (By.CSS_SELECTOR, "#write_review")
+    ITEM_ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, "#add_to_basket_form")
+    ITEM_ADD_TO_WISHLIST_BUTTON = (By.CSS_SELECTOR, "button[class$='wishlist']")
+
+    MESSAGES_ADDED_ITEM_NAME = (By.XPATH, "//*[text()[contains(.,'added')]]/strong")
+    MESSAGES_ADDED_ITEM_PRICE = (By.XPATH, "//*[text()[contains(.,'basket total')]]/strong")
