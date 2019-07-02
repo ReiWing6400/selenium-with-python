@@ -19,3 +19,5 @@ class LoginPageLocators(object):
 
 class ProductPageLocators(object):
     ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, "#add_to_basket_form")
+    ITEM_NAME = (By.CSS_SELECTOR, "div[class$='product_main'] > h1")
+    ADDED_ITEM_NAME = (By.XPATH, "//*[text()[contains(.,'added')]]/strong")

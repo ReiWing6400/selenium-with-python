@@ -30,3 +30,7 @@ class BasePage(object):
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    def is_elements_match(self, el1, el2):
+        assert el1 == el2, "Elements' don't match"
+        assert True
