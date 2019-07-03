@@ -37,11 +37,23 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.ITEM_PRICE), "Item price is not present"
         assert self.is_element_present(*ProductPageLocators.ITEM_OK_ICON), "Item Ok_icon is not present"
         assert self.is_element_present(*ProductPageLocators.ITEM_AVAILABILITY), "Item availability is not present"
-        assert self.is_element_present(*ProductPageLocators.ITEM_ADD_TO_BASKET_BUTTON), "Item add to basket button is not present"
-        assert self.is_element_present(*ProductPageLocators.ITEM_ADD_TO_WISHLIST_BUTTON), "Item add to wishlist button is not present"
+        assert self.is_element_present(*ProductPageLocators.ITEM_ADD_TO_BASKET_BUTTON), \
+            "Item add to basket button is not present"
+        assert self.is_element_present(*ProductPageLocators.ITEM_ADD_TO_WISHLIST_BUTTON), \
+            "Item add to wishlist button is not present"
         assert True
 
     def should_be_messages(self):
         assert self.is_element_present(*ProductPageLocators.MESSAGES_OFFER), "Offer message is not present"
-        assert self.is_element_present(*ProductPageLocators.MESSAGES_ADDED_ITEM_PRICE), "Item price message is not present"
-        assert self.is_element_present(*ProductPageLocators.MESSAGES_ADDED_ITEM_NAME), "Item name message is not present"
+        assert self.is_element_present(*ProductPageLocators.MESSAGES_ADDED_ITEM_PRICE), \
+            "Item price message is not present"
+        assert self.is_element_present(*ProductPageLocators.MESSAGES_ADDED_ITEM_NAME), \
+            "Item name message is not present"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGES_ADDED_ITEM_NAME), \
+            "Success message is presented, but should not be"
+
+    def should_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.MESSAGES_ADDED_ITEM_NAME), \
+            "Success message is presented, but should disappeared"

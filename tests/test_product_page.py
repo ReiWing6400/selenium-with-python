@@ -16,6 +16,7 @@ def test_guest_can_add_product_to_cart(browser, link):
     page = ProductPage(browser, link)
     page.open()
     page.should_be_product_main_form()
+    page.should_not_be_success_message()
 
     item_price = page.get_item_price()
     item_name = page.get_item_name()
@@ -32,3 +33,26 @@ def test_guest_can_add_product_to_cart(browser, link):
     page.is_elements_match(item_name, messages_added_item_name)
     page.is_elements_match(item_price, messages_add_item_price)
     page.is_elements_match(item_price, header_basket_total_price)
+
+
+def test_guest_cant_see_success_message_after_adding_product_to_cart(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
+    page = ProductPage(browser, link)
+    page.open()
+    page.click_add_to_basket()
+    page.should_not_be_success_message()
+
+
+def test_guest_cant_see_success_message(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_not_be_success_message()
+
+
+def test_message_disappeared_after_adding_product_to_cart(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
+    page = ProductPage(browser, link)
+    page.open()
+    page.click_add_to_basket()
+    page.should_not_be_success_message()
