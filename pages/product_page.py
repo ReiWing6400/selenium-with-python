@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from .locators import ProductPageLocators
+from .locators import ProductPageLocators, BasePageLocators
 
 
 class ProductPage(BasePage):
@@ -28,8 +28,9 @@ class ProductPage(BasePage):
         return messages_added_item_price
 
     def get_header_basket_total_price(self):
-        header_basket_total_price_el = self.browser.find_element(*ProductPageLocators.ITEM_PRICE)
-        header_basket_total_price = str.strip(header_basket_total_price_el.text)
+        header_basket_total_price_el = self.browser.find_element(*BasePageLocators.HEADER_BASKET_TOTAL_PRICE)
+        header_basket_total_price_text = str.strip(header_basket_total_price_el.text).split(":")[1].split("\n")[0]
+        header_basket_total_price = str.strip(header_basket_total_price_text)
         return header_basket_total_price
 
     def should_be_product_main_form(self):

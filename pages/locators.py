@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 class BasePageLocators(object):
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    HEADER_BASKET_TOTAL_PRICE = (By.CSS_SELECTOR, "div[class^='basket-mini']")
 
 
 class MainPageLocators(object):
@@ -23,8 +24,6 @@ class LoginPageLocators(object):
 
 
 class ProductPageLocators(object):
-    HEADER_BASKET_TOTAL_PRICE = (By.CSS_SELECTOR, "div[class^='basket-mini']")
-
     ITEM_NAME = (By.CSS_SELECTOR, "div[class$='product_main'] > h1")
     ITEM_PRICE = (By.CSS_SELECTOR, "div[class$='product_main'] > .price_color")
     ITEM_OK_ICON = (By.CSS_SELECTOR, "div[class$='product_main'] i[class='icon-ok']")
