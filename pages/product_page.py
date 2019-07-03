@@ -12,15 +12,25 @@ class ProductPage(BasePage):
         item_name = item_name_el.text
         return item_name
 
-    def get_added_item_name(self):
-        added_item_name_el = self.browser.find_element(*ProductPageLocators.MESSAGES_ADDED_ITEM_NAME)
-        added_item_name = added_item_name_el.text
-        return added_item_name
+    def get_messages_added_item_name(self):
+        messages_added_item_name_el = self.browser.find_element(*ProductPageLocators.MESSAGES_ADDED_ITEM_NAME)
+        messages_added_item_name = messages_added_item_name_el.text
+        return messages_added_item_name
 
     def get_item_price(self):
         item_price_el = self.browser.find_element(*ProductPageLocators.ITEM_PRICE)
-        item_price = item_price_el.text
+        item_price = str.strip(item_price_el.text)
         return item_price
+
+    def get_messages_added_item_price(self):
+        messages_added_item_price_el = self.browser.find_element(*ProductPageLocators.MESSAGES_ADDED_ITEM_PRICE)
+        messages_added_item_price = str.strip(messages_added_item_price_el.text)
+        return messages_added_item_price
+
+    def get_header_basket_total_price(self):
+        header_basket_total_price_el = self.browser.find_element(*ProductPageLocators.ITEM_PRICE)
+        header_basket_total_price = str.strip(header_basket_total_price_el.text)
+        return header_basket_total_price
 
     def should_be_product_main_form(self):
         assert self.is_element_present(*ProductPageLocators.ITEM_NAME), "Item name is not present"
@@ -30,3 +40,8 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.ITEM_ADD_TO_BASKET_BUTTON), "Item add to basket button is not present"
         assert self.is_element_present(*ProductPageLocators.ITEM_ADD_TO_WISHLIST_BUTTON), "Item add to wishlist button is not present"
         assert True
+
+    def should_be_messages(self):
+        assert self.is_element_present(*ProductPageLocators.MESSAGES_OFFER), "Offer message is not present"
+        assert self.is_element_present(*ProductPageLocators.MESSAGES_ADDED_ITEM_PRICE), "Item price message is not present"
+        assert self.is_element_present(*ProductPageLocators.MESSAGES_ADDED_ITEM_NAME), "Item name message is not present"

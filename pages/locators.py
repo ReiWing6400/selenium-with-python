@@ -18,7 +18,7 @@ class LoginPageLocators(object):
 
 
 class ProductPageLocators(object):
-    # HEADER_BASKET_TOTAL_PRICE =
+    HEADER_BASKET_TOTAL_PRICE = (By.CSS_SELECTOR, "div[class^='basket-mini']")
 
     ITEM_NAME = (By.CSS_SELECTOR, "div[class$='product_main'] > h1")
     ITEM_PRICE = (By.CSS_SELECTOR, "div[class$='product_main'] > .price_color")
@@ -29,4 +29,5 @@ class ProductPageLocators(object):
     ITEM_ADD_TO_WISHLIST_BUTTON = (By.CSS_SELECTOR, "button[class$='wishlist']")
 
     MESSAGES_ADDED_ITEM_NAME = (By.XPATH, "//*[text()[contains(.,'added')]]/strong")
+    MESSAGES_OFFER = (By.XPATH, "//*[text()[contains(.,'offer')]]/strong")
     MESSAGES_ADDED_ITEM_PRICE = (By.XPATH, "//*[text()[contains(.,'basket total')]]/strong")
