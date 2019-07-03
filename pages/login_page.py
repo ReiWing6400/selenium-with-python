@@ -20,8 +20,12 @@ class LoginPage(BasePage):
         assert True
 
     def should_be_register_form(self):
-        assert self.is_element_present(*LoginPageLocators.REGISTRATION_EMAIL_INPUT), "Registration email input is not presented"
-        assert self.is_element_present(*LoginPageLocators.REGISTRATION_PASSWORD1_INPUT), "Registration password input_1 is not presented"
-        assert self.is_element_present(*LoginPageLocators.REGISTRATION_PASSWORD2_INPUT), "Registration password input_2 is not presented"
-        assert self.is_element_present(*LoginPageLocators.REGISTRATION_SUBMIT_BUTTON), "Registration submit button is not presented"
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_EMAIL_INPUT), \
+            "Registration email input is not presented"
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_PASSWORD1_INPUT), \
+            "Registration password input_1 is not presented"
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_PASSWORD2_INPUT), \
+            "Registration password input_2 is not presented"
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_SUBMIT_BUTTON), \
+            "Registration submit button is not presented"
         assert True

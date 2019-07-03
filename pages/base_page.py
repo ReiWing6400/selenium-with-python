@@ -17,7 +17,7 @@ class BasePage(object):
 
     def go_to_basket_page(self):
         link = self.browser.find_element(*BasePageLocators.HEADER_BASKET)
-        link.click
+        link.click()
 
     def is_element_present(self, how, what):
         try:

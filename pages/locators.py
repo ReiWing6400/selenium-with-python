@@ -10,6 +10,7 @@ class BasePageLocators(object):
 
 class BasketPageLocators(object):
     BASKET_ITEMS = (By.CSS_SELECTOR, ".basket-items")
+    BASKET_CONTENT = (By.CSS_SELECTOR, "#content_inner p")
 
 
 class LoginPageLocators(object):
