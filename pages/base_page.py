@@ -2,7 +2,7 @@ import math
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
-from ..pages.locators import BasePageLocators, MainPageLocators
+from .locators import BasePageLocators, MainPageLocators
 
 
 class BasePage(object):
@@ -16,7 +16,7 @@ class BasePage(object):
         link.click()
 
     def go_to_basket_page(self):
-        link = self.browser.find_element(*BasePageLocators.HEADER_BASKET_TOTAL_PRICE)
+        link = self.browser.find_element(*BasePageLocators.HEADER_BASKET)
         link.click
 
     def is_element_present(self, how, what):

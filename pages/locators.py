@@ -5,10 +5,11 @@ class BasePageLocators(object):
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
     HEADER_BASKET_TOTAL_PRICE = (By.CSS_SELECTOR, "div[class^='basket-mini']")
+    HEADER_BASKET = (By.CSS_SELECTOR, ".btn-group a[href$='/basket/']")
 
 
-class MainPageLocators(object):
-    REGISTRATION_LINK = (By.CSS_SELECTOR, "#registration_link")
+class BasketPageLocators(object):
+    BASKET_ITEMS = (By.CSS_SELECTOR, ".basket-items")
 
 
 class LoginPageLocators(object):
@@ -21,6 +22,9 @@ class LoginPageLocators(object):
     REGISTRATION_PASSWORD1_INPUT = (By.CSS_SELECTOR, "#id_registration-password1")
     REGISTRATION_PASSWORD2_INPUT = (By.CSS_SELECTOR, "#id_registration-password2")
     REGISTRATION_SUBMIT_BUTTON = (By.NAME, "registration_submit")
+
+class MainPageLocators(object):
+    REGISTRATION_LINK = (By.CSS_SELECTOR, "#registration_link")
 
 
 class ProductPageLocators(object):
