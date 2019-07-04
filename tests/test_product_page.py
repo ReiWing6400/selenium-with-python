@@ -1,5 +1,6 @@
 from ..pages.product_page import ProductPage
 from ..pages.login_page import LoginPage
+from ..pages.basket_page import BasketPage
 import pytest
 import time
 
@@ -12,6 +13,7 @@ class TestGuestLoginFromProductPage(object):
         page.open()
         page.should_be_login_link()
 
+    @pytest.mark.need_review
     def test_guest_can_go_to_login_page_from_product_page(self, browser):
         link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
         page = ProductPage(browser, link)
@@ -25,22 +27,12 @@ class TestGuestLoginFromProductPage(object):
 
 @pytest.mark.add_to_cart_guest
 class TestGuestAddToCartFromProductPage(object):
-    @pytest.mark.parametrize('link', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
-                                      "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
-                                      "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer2",
-                                      "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer3",
-                                      "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer4",
-                                      "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer5",
-                                      "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer6",
-                                      "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer7",
-                                      "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer8",
-                                      "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"])
-    def test_guest_can_add_product_to_cart(self, browser, link):
+    @pytest.mark.need_review
+    def test_guest_can_add_product_to_cart(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
         page = ProductPage(browser, link)
         page.open()
         page.should_be_product_main_form()
-        page.should_be_wishlist_button_disabled_for_guest()
-        page.should_not_be_success_message()
         item_price = page.get_item_price()
         item_name = page.get_item_name()
         page.click_add_to_basket()
@@ -53,25 +45,16 @@ class TestGuestAddToCartFromProductPage(object):
         page.is_elements_match(item_price, messages_add_item_price)
         page.is_elements_match(item_price, header_basket_total_price)
 
-    def test_guest_cant_see_success_message_after_adding_product_to_cart(self, browser):
+    @pytest.mark.need_review
+    def test_guest_cant_see_product_in_cart_opened_from_product_page(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
         page = ProductPage(browser, link)
         page.open()
-        page.click_add_to_basket()
-        page.should_not_be_success_message()
-
-    def test_guest_cant_see_success_message(self, browser):
-        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
-        page = ProductPage(browser, link)
-        page.open()
-        page.should_not_be_success_message()
-
-    def test_message_disappeared_after_adding_product_to_cart(self, browser):
-        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
-        page = ProductPage(browser, link)
-        page.open()
-        page.click_add_to_basket()
-        page.should_not_be_success_message()
+        page.go_to_basket_page()
+        basket_page = BasketPage(browser, browser.current_url)
+        basket_page.should_be_basket_url()
+        basket_page.should_be_basket_empty_text()
+        basket_page.should_not_be_basket_items()
 
 
 @pytest.mark.add_to_cart_user
@@ -86,6 +69,7 @@ class TestUserAddToCartFromProductPage(object):
         page.register_new_user(email, password)
         page.should_be_registration_confirmation()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_cart(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
         page = ProductPage(browser, link)
