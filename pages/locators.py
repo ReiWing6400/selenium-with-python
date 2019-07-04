@@ -24,6 +24,7 @@ class LoginPageLocators(object):
     REGISTRATION_PASSWORD2_INPUT = (By.CSS_SELECTOR, "#id_registration-password2")
     REGISTRATION_SUBMIT_BUTTON = (By.NAME, "registration_submit")
 
+
 class MainPageLocators(object):
     REGISTRATION_LINK = (By.CSS_SELECTOR, "#registration_link")
 

@@ -9,8 +9,8 @@ class BasketPage(BasePage):
 
     def should_be_basket_empty_text(self):
         basket_empty_el = self.browser.find_element(*BasketPageLocators.BASKET_CONTENT)
-        basket_empty_text = basket_empty_el.text
-        assert basket_empty_text == 'Your basket is empty.', "Basket isn't empty, but should be"
+        basket_empty_text = str.strip(basket_empty_el.text.split(".")[0])
+        assert basket_empty_text == 'Your basket is empty', "Basket empty text isn't present"
         assert True
 
     def should_not_be_basket_items(self):
