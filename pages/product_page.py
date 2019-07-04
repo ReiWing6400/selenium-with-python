@@ -40,9 +40,15 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.ITEM_AVAILABILITY), "Item availability is not present"
         assert self.is_element_present(*ProductPageLocators.ITEM_ADD_TO_BASKET_BUTTON), \
             "Item add to basket button is not present"
-        assert self.is_element_present(*ProductPageLocators.ITEM_ADD_TO_WISHLIST_BUTTON), \
-            "Item add to wishlist button is not present"
         assert True
+
+    def should_be_wishlist_button_disabled_for_guest(self):
+        assert self.is_not_element_clickable(*ProductPageLocators.ITEM_ADD_TO_WISHLIST_BUTTON_GUEST), \
+            "Item add to wishlist is clickable for guest, but should not"
+
+    def should_be_wishlist_button_clickable_for_user(self):
+        assert self.is_element_clickable(*ProductPageLocators.ITEM_ADD_TO_WISHLIST_BUTTON_USER), \
+            "Item add to wishlist is not clickable for user"
 
     def should_be_messages(self):
         assert self.is_element_present(*ProductPageLocators.MESSAGES_OFFER), "Offer message is not present"

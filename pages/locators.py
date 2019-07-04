@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 
 
 class BasePageLocators(object):
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
+
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
     HEADER_BASKET_TOTAL_PRICE = (By.CSS_SELECTOR, "div[class^='basket-mini']")
@@ -24,6 +26,9 @@ class LoginPageLocators(object):
     REGISTRATION_PASSWORD2_INPUT = (By.CSS_SELECTOR, "#id_registration-password2")
     REGISTRATION_SUBMIT_BUTTON = (By.NAME, "registration_submit")
 
+    REGISTRATION_CONFIRMATION_TEXT = (By.CSS_SELECTOR, ".alertinner.wicon")
+    REGISTRATION_CONFIRMATION_ICON = (By.CSS_SELECTOR, ".icon-ok-sign")
+
 
 class MainPageLocators(object):
     REGISTRATION_LINK = (By.CSS_SELECTOR, "#registration_link")
@@ -36,7 +41,8 @@ class ProductPageLocators(object):
     ITEM_AVAILABILITY = (By.CSS_SELECTOR, "div[class$='product_main'] p.instock.availability")
     ITEM_SEND_FEEDBACK_BUTTON = (By.CSS_SELECTOR, "#write_review")
     ITEM_ADD_TO_BASKET_BUTTON = (By.CSS_SELECTOR, "#add_to_basket_form")
-    ITEM_ADD_TO_WISHLIST_BUTTON = (By.CSS_SELECTOR, "button[class$='wishlist']")
+    ITEM_ADD_TO_WISHLIST_BUTTON_GUEST = (By.CSS_SELECTOR, "button[class$='wishlist']")
+    ITEM_ADD_TO_WISHLIST_BUTTON_USER = (By.CSS_SELECTOR, "#add_to_wishlist_form button")
 
     MESSAGES_ADDED_ITEM_NAME = (By.XPATH, "//*[text()[contains(.,'added')]]/strong")
     MESSAGES_OFFER = (By.XPATH, "//*[text()[contains(.,'offer')]]/strong")
