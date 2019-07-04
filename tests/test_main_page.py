@@ -26,10 +26,13 @@ def test_guest_cant_see_product_in_cart_opened_from_main_page(browser):
     basket_page.should_be_basket_empty_text()
     basket_page.should_not_be_basket_items()
 
+
 def test_guest_cant_see_product_in_cart_opened_from_product_page(browser):
-
-
-# Гость открывает страницу товара
-# Переходит в корзину по кнопке в шапке
-# Ожидаем, что в корзине нет товаров
-# Ожидаем, что есть текст о том что корзина пуста
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/"
+    page = BasePage(browser, link)
+    page.open()
+    page.go_to_basket_page()
+    basket_page = BasketPage(browser, browser.current_url)
+    basket_page.should_be_basket_url()
+    basket_page.should_be_basket_empty_text()
+    basket_page.should_not_be_basket_items()
